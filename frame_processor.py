@@ -2,7 +2,7 @@ import cupy as cp
 from utils import VideoProcessingState
 
 class FrameProcessor:
-    def __init__(self, kernel_size=7, sigma=3.0, block_size=32, hi_threshold=400, lo_threshold=100, frac_threshold=0.1):
+    def __init__(self, kernel_size=7, sigma=3.0, block_size=16, hi_threshold=400, lo_threshold=100, frac_threshold=0.1):
         self.gaussian_kernel = self._gaussian_kernel(kernel_size, sigma)
         self.block_size = block_size
         self.hi_threshold = hi_threshold
@@ -87,5 +87,5 @@ class FrameProcessor:
         include_frames = (hi_count > 0) | (lo_count > self.frac_threshold * total_blocks)
 
         # Include the first frame
-        return cp.concatenate((cp.array([True]), include_frames))
+        return cp.concatenate((cp.array([include_frames[0]]), include_frames))
 

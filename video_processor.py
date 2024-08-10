@@ -10,7 +10,7 @@ class VideoProcessor:
         self,
         input_file,
         output_file,
-        batch_size=64,
+        batch_size=32,
     ):
         self.input_file = input_file
         self.output_file = output_file

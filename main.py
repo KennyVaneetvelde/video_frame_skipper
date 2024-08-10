@@ -11,14 +11,8 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--output_file",
-        default="output.mp4",
+        default="output2.mp4",
         help="Path for the output video file (default: output.mp4)",
-    )
-    parser.add_argument(
-        "--difference_threshold",
-        type=float,
-        default=0.5,
-        help="Threshold for frame difference (default: 0.001)",
     )
 
     args = parser.parse_args()
@@ -27,7 +21,7 @@ if __name__ == "__main__":
         args.input_file,
         args.output_file,
     )
-    frame_processor = FrameProcessor(kernel_size=15, sigma=7.0)
+    frame_processor = FrameProcessor()
     total_duration, skipped_duration, processed_duration = (
         processor.remove_static_frames(frame_processor)
     )
