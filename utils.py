@@ -7,6 +7,7 @@ VideoProcessingState = namedtuple(
     ["total_duration", "skipped_duration", "previous_frame"],
 )
 
+
 def extract_video_metadata(input_file):
     ffprobe_cmd = [
         "ffprobe",

@@ -5,6 +5,7 @@ from video_stream import VideoStream
 from video_writer import VideoWriter
 from utils import VideoMetadata, VideoProcessingState, extract_video_metadata
 
+
 class VideoProcessor:
     def __init__(
         self,
@@ -41,8 +42,8 @@ class VideoProcessor:
                 if not batch:  # Skip empty batches
                     continue
 
-                state, include_frames, processed_batch_gpu = frame_processor.process_batch(
-                    batch, state, self.metadata.fps
+                state, include_frames, processed_batch_gpu = (
+                    frame_processor.process_batch(batch, state, self.metadata.fps)
                 )
 
                 # Filter the batch on GPU
